@@ -37,6 +37,7 @@ typedef struct{
 
 //PROTOTIPOS
 int eProducto_inicializar(eProducto lista[], int tam);
+void eProducto_hardcodearProductos(eProducto lista[], int tam);
 int eProducto_buscarEspacioLibre(eProducto lista[], int tam);
 eProducto eProducto_cargarUnProducto();
 void eProducto_listarUnoParaCompra(eProducto p);

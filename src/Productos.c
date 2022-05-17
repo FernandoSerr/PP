@@ -7,6 +7,7 @@
 
 #include "Productos.h"
 
+#define CANT_PRODUCTOS_HARDCODEADOS 5
 
 int eProducto_inicializar(eProducto lista[], int tam)
 {
@@ -19,16 +20,71 @@ int eProducto_inicializar(eProducto lista[], int tam)
 			lista[i].isEmpty = LIBRE;
 		}
 		rtn = 1;
+
+		//HARDCODEO DE PRODUCTOS
+		eProducto_hardcodearProductos(lista, tam);
 	}
 	else {rtn = -1;}
 
 	return rtn;
 }
 
+void eProducto_hardcodearProductos(eProducto lista[], int tam)
+
+{
+	if (lista != NULL && tam > 0)
+	{
+		lista[0].idProducto = 1;
+		lista[0].categoria = 1;
+		strcpy(lista[0].nombreCategoria, "Tecnología");
+		strcpy(lista[0].nombreProducto, "Auriculares");
+		lista[0].precio = 5400.25;
+		lista[0].stock = 7;
+		lista[0].FK_idUsuarioVendedor = 2;
+		lista[0].isEmpty = EN_STOCK;
+
+		lista[1].idProducto = 2;
+		lista[1].categoria = 2;
+		strcpy(lista[1].nombreCategoria, "Moda");
+		strcpy(lista[1].nombreProducto, "Mocasines");
+		lista[1].precio = 6300;
+		lista[1].stock = 0;
+		lista[1].FK_idUsuarioVendedor = 3;
+		lista[1].isEmpty = BAJA;
+
+		lista[2].idProducto = 3;
+		lista[2].categoria = 4;
+		strcpy(lista[2].nombreCategoria, "Juguetes");
+		strcpy(lista[2].nombreProducto, "Peluche");
+		lista[2].precio = 2999.99;
+		lista[2].stock = 25;
+		lista[2].FK_idUsuarioVendedor = 2;
+		lista[2].isEmpty = EN_STOCK;
+
+		lista[3].idProducto = 4;
+		lista[3].categoria = 6;
+		strcpy(lista[3].nombreCategoria, "Otros");
+		strcpy(lista[3].nombreProducto, "Entradas Prim Sound");
+		lista[3].precio = 100000;
+		lista[3].stock = 1;
+		lista[3].FK_idUsuarioVendedor = 5;
+		lista[3].isEmpty = EN_STOCK;
+
+		lista[4].idProducto = 5;
+		lista[4].categoria = 2;
+		strcpy(lista[4].nombreCategoria, "Moda");
+		strcpy(lista[4].nombreProducto, "Bufanda");
+		lista[4].precio = 800;
+		lista[4].stock = 33;
+		lista[4].FK_idUsuarioVendedor = 5;
+		lista[4].isEmpty = EN_STOCK;
+	}
+}
+
 static int eProducto_obtenerIdUnico(void);
 static int eProducto_obtenerIdUnico()
 {
-	static int idAutoincremental = IDPRODUCTO_INICIAL;
+	static int idAutoincremental = IDPRODUCTO_INICIAL + CANT_PRODUCTOS_HARDCODEADOS;
 	return idAutoincremental++;
 }
 
